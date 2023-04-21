@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painting Contractors</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    label, input, textarea, button {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Our Painting Contractor Website</h1>
+  <p>Here, you can find information about our services, browse our e-commerce store, and apply for a painting job.</p>
+  <h2>Job Application</h2>
+  <form id="jobApplicationForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" required>
+
+    <label for="experience">Years of experience:</label>
+    <input type="number" id="experience" min="0" required>
+
+    <label for="message">Tell us about yourself:</label>
+    <textarea id="message" rows="4" required></textarea>
+
+    <button type="submit">Submit Application</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('jobApplicationForm');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      
+      const formData = new FormData(form);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        experience: formData.get('experience'),
+        message: formData.get('message')
+      };
+
+      // You can send this data to your server to process the application
+      console.log(data);
+      alert('Your application has been submitted!');
+      form.reset();
+    });
+  </script>
+</body>
+</html>
